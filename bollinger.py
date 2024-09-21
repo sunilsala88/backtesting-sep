@@ -32,14 +32,14 @@ class bollingerband(Strategy):
                 self.position.close()
             else:
                 pass
-            self.buy()
+            self.buy(sl=p-p*self.stop_number)
         elif self.upper[-1]<self.data.Close[-1]  :
             p=self.data.Close[-1]
             if self.position.is_long:
                 self.position.close()
             else:
                 pass
-            self.sell()
+            self.sell(sl=p+p*self.stop_number)
 
 
 data=yf.download("RELIANCE.NS",start="2017-01-01",end="2023-04-30")
@@ -58,8 +58,9 @@ bt.plot()
 
 
 
-# a=[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1]
-# stats=bt.optimize(stop_number=a,maximize='Return [%]')
-# print(stats)
-# print(stats['_strategy'])
+a=[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1]
+stats=bt.optimize(stop_number=a,maximize='Return [%]')
+print(stats)
+print(stats['_strategy'])
 # bt.plot()
+#overfitting
