@@ -1,10 +1,10 @@
 
 from backtesting import Backtest, Strategy
-from backtesting.lib import crossover
+
 import yfinance as yf
 import pandas as pd
 import time
-from ib_insync import *
+
 import pandas_ta as ta
 
 def sma(close_data,period):
@@ -53,7 +53,7 @@ bt=Backtest(data,bollingerband,cash=100_000)
 output=bt.run()
 print(output)
 print(output['_trades'])
-bt.plot()
+# bt.plot()
 
 
 
